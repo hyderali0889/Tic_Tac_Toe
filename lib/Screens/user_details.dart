@@ -38,6 +38,7 @@ class _UserDetailsState extends State<UserDetails> {
                       User userDetails =
                           User(name: val.trim(), gamesPlayedvsComputer: 0 ,gamesPlayedvsPlayer: 0, gamesWonvsComputer: 0 , gamesWonvsPlayer: 0 , consectiveWins: 0);
                       userData.put(userDetails);
+                      
                       Navigator.pushAndRemoveUntil(
                           context,
                           MaterialPageRoute(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tik_tak_toe/Screens/Games/single_player.dart';
 
 import '../Theme/main_colors.dart';
+import 'Games/multi_player.dart';
 
 class SignSelection extends StatelessWidget {
   final bool singleGame;
@@ -69,13 +70,24 @@ class SignSelection extends StatelessWidget {
 
                             TextButton(
                                 onPressed: () {
-                                  Navigator.pushAndRemoveUntil(
+                                  if(singleGame){
+                                    Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
                                           builder: ((context) =>
                                               const SinglePlayer(
                                                   selectedSymbol: "X"))),
                                       (route) => false);
+                                   }else{
+                                    Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: ((context) =>
+                                              const MultiPlayer(
+                                                  selectedSymbol: "X"))),
+                                      (route) => false);
+                                   }
+
                                 },
                                 child: Container(
                                   width: size.width * 0.4,
@@ -95,13 +107,23 @@ class SignSelection extends StatelessWidget {
                                 )),
                                  TextButton(
                                 onPressed: () {
-                                  Navigator.pushAndRemoveUntil(
+                                 if(singleGame){
+                                    Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
                                           builder: ((context) =>
                                               const SinglePlayer(
                                                   selectedSymbol: "O"))),
                                       (route) => false);
+                                   }else{
+                                    Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: ((context) =>
+                                              const MultiPlayer(
+                                                  selectedSymbol: "O"))),
+                                      (route) => false);
+                                   }
                                 },
                                 child: Container(
                                   width: size.width * 0.4,

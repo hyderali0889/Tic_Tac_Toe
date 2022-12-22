@@ -61,7 +61,7 @@ class _GameSelectionState extends State<GameSelection> {
                     height: size.height * 0.4,
                     child: Center(
                       child: Text(
-                        "Welcome \n  ${userData.get(userData.count() - 1)!.name.toUpperCase()}",
+                        "Welcome \n ${userData.get(userData.count())!.name.toUpperCase()}",
                         style: TextStyle(
                             color: MainColors.white,
                             fontSize: 32,
@@ -73,29 +73,32 @@ class _GameSelectionState extends State<GameSelection> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextButton(
-                            onPressed: () {
-                              Navigator.pushAndRemoveUntil(
-                                  context,
-                               MaterialPageRoute(builder: (context) => const SignSelection(singleGame: true) )  ,
-                                  (route) => false);
-                            },
-                            child: Container(
-                              width: size.width * 0.7,
-                              decoration: BoxDecoration(
-                                  color: Colors.red.shade600,
-                                  borderRadius: BorderRadius.circular(14.0)),
-                              child: Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(15.0),
-                                  child: Text(
-                                    "Single Player Game",
-                                    style: TextStyle(
-                                        color: MainColors.white, fontSize: 15),
+                        Padding(
+                          padding: const EdgeInsets.symmetric( vertical:10.0),
+                          child: TextButton(
+                              onPressed: () {
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                 MaterialPageRoute(builder: (context) => const SignSelection(singleGame: true) )  ,
+                                    (route) => false);
+                              },
+                              child: Container(
+                                width: size.width * 0.7,
+                                decoration: BoxDecoration(
+                                    color: Colors.red.shade600,
+                                    borderRadius: BorderRadius.circular(14.0)),
+                                child: Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Text(
+                                      "Single Player Game",
+                                      style: TextStyle(
+                                          color: MainColors.white, fontSize: 15),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            )),
+                              )),
+                        ),
                         TextButton(
                             onPressed: () {
                                 Navigator.pushAndRemoveUntil(
@@ -119,24 +122,27 @@ class _GameSelectionState extends State<GameSelection> {
                                 ),
                               ),
                             )),
-                        TextButton(
-                            onPressed: () {},
-                            child: Container(
-                              width: size.width * 0.7,
-                              decoration: BoxDecoration(
-                                  color: Colors.blue.shade600,
-                                  borderRadius: BorderRadius.circular(14.0)),
-                              child: Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(15.0),
-                                  child: Text(
-                                    "Statistics",
-                                    style: TextStyle(
-                                        color: MainColors.white, fontSize: 15),
+                        Padding(
+                          padding: const EdgeInsets.only( top :10.0),
+                          child: TextButton(
+                              onPressed: () {},
+                              child: Container(
+                                width: size.width * 0.7,
+                                decoration: BoxDecoration(
+                                    color: Colors.blue.shade600,
+                                    borderRadius: BorderRadius.circular(14.0)),
+                                child: Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(15.0),
+                                    child: Text(
+                                      "Statistics",
+                                      style: TextStyle(
+                                          color: MainColors.white, fontSize: 15),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ))
+                              )),
+                        )
                       ],
                     ),
                   ),

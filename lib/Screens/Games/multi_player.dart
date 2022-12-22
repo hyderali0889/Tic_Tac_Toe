@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:tik_tak_toe/Components/nothing_widget.dart';
-import 'package:tik_tak_toe/Controllers/single_game_controller.dart';
+import 'package:tik_tak_toe/Controllers/multi_game_controller.dart';
 
 import '../../Theme/main_colors.dart';
 
-class SinglePlayer extends StatefulWidget {
+class MultiPlayer extends StatefulWidget {
   final String selectedSymbol;
-  const SinglePlayer({super.key, required this.selectedSymbol});
+  const MultiPlayer({super.key, required this.selectedSymbol});
 
   @override
-  State<SinglePlayer> createState() => _SinglePlayerState();
+  State<MultiPlayer> createState() => _MultiPlayerState();
 }
 
-class _SinglePlayerState extends State<SinglePlayer> {
+class _MultiPlayerState extends State<MultiPlayer> {
   @override
   void initState() {
     super.initState();
     bool userPlaying = widget.selectedSymbol == "X" ? true : false;
-    Get.put(SingleController());
-    Get.find<SingleController>().changeUserPlaying(userPlaying);
+    Get.put(MultiController());
+    Get.find<MultiController>().changeUserPlaying(userPlaying);
   }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    SingleController controller = Get.find<SingleController>();
+     MultiController controller = Get.find<MultiController>();
 
     return Scaffold(
       body: SafeArea(

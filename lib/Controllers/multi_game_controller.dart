@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class SingleController extends GetxController {
+class MultiController extends GetxController {
   RxBool userPlaying = false.obs;
   RxBool isGameCompleted = false.obs;
 
@@ -20,6 +20,8 @@ class SingleController extends GetxController {
   }
 
   checkIfGameFinished() {
+
+
 
 
     if (boxes[0] != "" &&
