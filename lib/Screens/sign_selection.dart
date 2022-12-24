@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tik_tak_toe/Screens/Games/single_player.dart';
 
 import '../Theme/main_colors.dart';
@@ -67,27 +68,15 @@ class SignSelection extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-
                             TextButton(
                                 onPressed: () {
-                                  if(singleGame){
-                                    Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: ((context) =>
-                                              const SinglePlayer(
-                                                  selectedSymbol: "X"))),
-                                      (route) => false);
-                                   }else{
-                                    Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: ((context) =>
-                                              const MultiPlayer(
-                                                  selectedSymbol: "X"))),
-                                      (route) => false);
-                                   }
-
+                                  if (singleGame) {
+                                    Get.offAll(() => const SinglePlayer(
+                                        selectedSymbol: "X"));
+                                  } else {
+                                      Get.offAll(() => const MultiPlayer(
+                                        selectedSymbol: "X"));
+                                  }
                                 },
                                 child: Container(
                                   width: size.width * 0.4,
@@ -105,25 +94,15 @@ class SignSelection extends StatelessWidget {
                                         )),
                                   ),
                                 )),
-                                 TextButton(
+                            TextButton(
                                 onPressed: () {
-                                 if(singleGame){
-                                    Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: ((context) =>
-                                              const SinglePlayer(
-                                                  selectedSymbol: "O"))),
-                                      (route) => false);
-                                   }else{
-                                    Navigator.pushAndRemoveUntil(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: ((context) =>
-                                              const MultiPlayer(
-                                                  selectedSymbol: "O"))),
-                                      (route) => false);
-                                   }
+                                  if (singleGame) {
+                                     Get.offAll(() => const SinglePlayer(
+                                        selectedSymbol: "O"));
+                                  } else {
+                                      Get.offAll(() => const MultiPlayer(
+                                        selectedSymbol: "O"));
+                                  }
                                 },
                                 child: Container(
                                   width: size.width * 0.4,

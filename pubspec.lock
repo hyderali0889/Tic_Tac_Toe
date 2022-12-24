@@ -207,6 +207,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  font_awesome_flutter:
+    dependency: "direct main"
+    description:
+      path: "assets/Fa_Icons"
+      relative: true
+    source: path
+    version: "10.3.0"
   frontend_server_client:
     dependency: transitive
     description:

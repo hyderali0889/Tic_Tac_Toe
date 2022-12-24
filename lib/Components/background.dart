@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:tik_tak_toe/Components/nothing_widget.dart';
 import 'package:tik_tak_toe/Theme/main_colors.dart';
 
@@ -34,7 +35,7 @@ class Background extends StatelessWidget {
                           children: [
                             IconButton(
                                 onPressed: () {
-                                  Navigator.pop(context);
+                                  Get.back();
                                 },
                                 icon: Icon(
                                   Icons.arrow_left,

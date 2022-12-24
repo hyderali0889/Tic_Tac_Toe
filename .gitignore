@@ -9,6 +9,7 @@
 .history
 .svn/
 migrate_working_dir/
+assets/Fa_Icons
 
 # IntelliJ related
 *.iml

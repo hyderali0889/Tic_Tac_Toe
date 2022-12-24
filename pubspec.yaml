@@ -35,6 +35,12 @@ dependencies:
   get: ^4.6.5
   objectbox: ^1.6.2
   objectbox_flutter_libs: any
+  font_awesome_flutter: '>= 4.7.0'
+
+
+dependency_overrides:
+  font_awesome_flutter:
+    path: assets/Fa_Icons
 
 dev_dependencies:
   build_runner: ^2.0.0

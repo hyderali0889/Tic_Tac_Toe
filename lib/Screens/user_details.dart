@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:tik_tak_toe/Components/background.dart';
 import 'package:tik_tak_toe/Screens/game_selection.dart';
 import 'package:tik_tak_toe/Theme/main_colors.dart';
@@ -35,15 +37,18 @@ class _UserDetailsState extends State<UserDetails> {
                       if (nameController.text.isEmpty) {
                         return;
                       }
-                      User userDetails =
-                          User(name: val.trim(), gamesPlayedvsComputer: 0 ,gamesPlayedvsPlayer: 0, gamesWonvsComputer: 0 , gamesWonvsPlayer: 0 , consectiveWins: 0);
+                      User userDetails = User(
+                          name: val.trim(),
+                          gamesPlayedvsComputer: 0,
+                          gamesPlayedvsPlayer: 0,
+                          gamesWonvsComputer: 0,
+                          gamesWonvsPlayer: 0,
+                          consectiveWins: 0);
                       userData.put(userDetails);
-                      
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const GameSelection()),
-                          (route) => false);
+
+                      Get.offAll( ()=>const GameSelection());
+
+
                     },
                     controller: nameController,
                     decoration: InputDecoration(
@@ -71,13 +76,16 @@ class _UserDetailsState extends State<UserDetails> {
                         if (nameController.text.isEmpty) {
                           return;
                         }
-                        User userDetails =  User(name: nameController.text.trim(), gamesPlayedvsComputer: 0 ,gamesPlayedvsPlayer: 0, gamesWonvsComputer: 0 , gamesWonvsPlayer: 0 , consectiveWins: 0);
+                        User userDetails = User(
+                            name: nameController.text.trim(),
+                            gamesPlayedvsComputer: 0,
+                            gamesPlayedvsPlayer: 0,
+                            gamesWonvsComputer: 0,
+                            gamesWonvsPlayer: 0,
+                            consectiveWins: 0);
                         userData.put(userDetails);
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const GameSelection()),
-                            (route) => false);
+                                             Get.offAll( ()=>const GameSelection());
+
                       },
                       child: Container(
                         width: 350,
@@ -95,8 +103,8 @@ class _UserDetailsState extends State<UserDetails> {
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 20.0),
-                              child: Icon(
-                                Icons.play_arrow,
+                              child: FaIcon(
+                                FontAwesomeIcons.lightArrowRight,
                                 color: MainColors.white,
                                 size: 20,
                               ),

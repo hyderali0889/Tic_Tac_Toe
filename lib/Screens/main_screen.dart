@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:tik_tak_toe/Components/background.dart';
 import 'package:tik_tak_toe/Screens/game_selection.dart';
 import 'package:tik_tak_toe/Screens/user_details.dart';
@@ -16,7 +18,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-   Box<User> userData = objectBox.store.box<User>();
+  Box<User> userData = objectBox.store.box<User>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,10 +30,7 @@ class _MainScreenState extends State<MainScreen> {
                 padding: const EdgeInsets.only(top: 119.0),
                 child: InkWell(
                   onTap: () {
-                  Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const UserDetails())) ;
+                    Get.to(const UserDetails());
                   },
                   child: Container(
                     width: 350,
@@ -49,8 +48,8 @@ class _MainScreenState extends State<MainScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20.0),
-                          child: Icon(
-                            Icons.arrow_right,
+                          child: FaIcon(
+                            FontAwesomeIcons.lightArrowRight,
                             color: MainColors.white,
                             size: 20,
                           ),
