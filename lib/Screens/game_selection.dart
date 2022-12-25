@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:tik_tak_toe/Screens/about_screen.dart';
 import 'package:tik_tak_toe/Screens/sign_selection.dart';
+import 'package:tik_tak_toe/Screens/stats_screen.dart';
 import 'package:tik_tak_toe/Theme/main_colors.dart';
 
 import '../Components/main_components.dart';
@@ -84,12 +86,13 @@ class _GameSelectionState extends State<GameSelection> {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 8.0),
                                       child: MainComponents().upperRowButton(
-                                          FontAwesomeIcons.lightChartBar,
-                                          () {})),
+                                          FontAwesomeIcons.lightChartBar, () {
+                                        Get.to(() => const StatsScreen());
+                                      })),
                                   MainComponents().upperRowButton(
                                       FontAwesomeIcons.lightShield, () {
-                                    MainComponents().showADialog(
-                                        context, achievments(userData), size);
+                                    MainComponents().showAchDialog(context,
+                                        achievments(userData, size), size);
                                   })
                                 ],
                               )
@@ -125,18 +128,14 @@ class _GameSelectionState extends State<GameSelection> {
                               () => const SignSelection(singleGame: false));
                         }, FontAwesomeIcons.lightGameBoard,
                             "Multi Player Game"),
-                        MainComponents().mainButton(
-                            size,
-                            Colors.blue.shade600,
-                            () {},
-                            FontAwesomeIcons.lightChartBar,
-                            "Statistics"),
-                        MainComponents().mainButton(
-                            size,
-                            Colors.purple.shade600,
-                            () {},
-                            FontAwesomeIcons.lightWalking,
-                            "About")
+                        MainComponents().mainButton(size, Colors.blue.shade600,
+                            () {
+                          Get.to(() => const StatsScreen());
+                        }, FontAwesomeIcons.lightChartBar, "Statistics"),
+                        MainComponents()
+                            .mainButton(size, Colors.purple.shade600, () {
+                          Get.to(() => const AboutScreen());
+                        }, FontAwesomeIcons.lightWalking, "About")
                       ],
                     ),
                   ),
@@ -191,8 +190,10 @@ class _GameSelectionState extends State<GameSelection> {
                   });
                 }, FontAwesomeIcons.lightBracketsCurly, "Reset Statstics"),
               ),
-              MainComponents().mainButton(size, Colors.purple.shade600, () {},
-                  FontAwesomeIcons.lightWreath, "Credits"),
+              MainComponents().mainButton(size, Colors.purple.shade600, () {
+                Get.back();
+                Get.to(() => const AboutScreen());
+              }, FontAwesomeIcons.lightWreath, "Credits"),
             ],
           ),
         ),
@@ -278,9 +279,88 @@ class _GameSelectionState extends State<GameSelection> {
     );
   }
 
-  Widget achievments(userData) {
+  Widget achievments(userData, size) {
     return ListView(
-      children: [Text("${userData.get(1).name}")],
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(bottom: 25.0),
+          child: Center(
+            child: Text("Achievments",
+                style: TextStyle(
+                    color: MainColors.white, fontSize: 20, fontFamily: "Bold")),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 25.0),
+          child: Text("Single Player",
+              style: TextStyle(
+                  color: MainColors.white, fontSize: 18, fontFamily: "Bold")),
+        ),
+        MainComponents().achContainer(
+            size,
+            "${userData.get(1).gamesWonvsComputer} / 3 Games Won",
+            Colors.red.shade600,
+            Colors.purple.shade600,
+            "Beginner",
+            "Win 3 Games \nAgainst Computer"),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15.0),
+          child: MainComponents().achContainer(
+              size,
+              "${userData.get(1).gamesWonvsComputer} / 6 Games Won",
+              Colors.green.shade600,
+              Colors.indigo.shade600,
+              "Starter",
+              "Win 6 Games \nAgainst Computer"),
+        ),
+        MainComponents().achContainer(
+            size,
+            "${userData.get(1).gamesWonvsComputer} / 9 Games Won",
+            Colors.red.shade600,
+            Colors.pink.shade600,
+            "Expert",
+            "Win 9 Games \nAgainst Computer"),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15.0),
+          child: MainComponents().achContainer(
+              size,
+              "${userData.get(1).gamesWonvsComputer} / 3 Games Won",
+              Colors.teal.shade600,
+              Colors.orange.shade600,
+              "Fast Winner",
+              "Win 3 \nConsective Games"),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 25.0),
+          child: Text("Multi Player",
+              style: TextStyle(
+                  color: MainColors.white, fontSize: 18, fontFamily: "Bold")),
+        ),
+        MainComponents().achContainer(
+            size,
+            "${userData.get(1).gamesWonvsPlayer} / 3 Games Won",
+            Colors.cyan.shade600,
+            Colors.black54,
+            "Beginner",
+            "Win 3 Games \nAgainst Person"),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15.0),
+          child: MainComponents().achContainer(
+              size,
+              "${userData.get(1).gamesWonvsPlayer} / 6 Games Won",
+              Colors.pink.shade600,
+              Colors.orange.shade600,
+              "Starter",
+              "Win 6 Games \nAgainst Person"),
+        ),
+        MainComponents().achContainer(
+            size,
+            "${userData.get(1).gamesWonvsPlayer} / 9 Games Won",
+            Colors.deepOrange.shade600,
+            Colors.lightBlue.shade600,
+            "Expert",
+            "Win 9 Games \nAgainst Person"),
+      ],
     );
   }
 }
