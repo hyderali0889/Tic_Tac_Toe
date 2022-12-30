@@ -1,16 +1,13 @@
-# tik_tak_toe
+# Tic Tac Toe
 
-A new Flutter project.
+A Flutter game created by Hayder Ali as a portfolio project. This game contains a single playing computer to play with.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This app is build for Android, Windows.
 
-A few resources to get you started if this is your first Flutter project:
+A few resources to get you started :
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Android App](https://drive.google.com/file/d/1R1z3Z8J102TZ0Thyu3hmiWNuoB-Zfyxx/view?usp=share_link)
+- [Windows App](https://drive.google.com/file/d/1xh98HUHut403RTQ71KHkyoX-yo--fElP/view?usp=share_link)
+- [Github Repo](https://github.com/hyderali0889/Tic_Tac_Toe)
