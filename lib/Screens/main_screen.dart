@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:tik_tak_toe/Components/background.dart';
-import 'package:tik_tak_toe/Screens/game_selection.dart';
 import 'package:tik_tak_toe/Screens/user_details.dart';
 import 'package:tik_tak_toe/Theme/main_colors.dart';
 

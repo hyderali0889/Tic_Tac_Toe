@@ -1,7 +1,11 @@
+
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:tik_tak_toe/Components/main_components.dart';
 import 'package:tik_tak_toe/Components/nothing_widget.dart';
 import 'package:tik_tak_toe/Controllers/single_game_controller.dart';
+import 'package:tik_tak_toe/Screens/game_selection.dart';
 
 import '../../Theme/main_colors.dart';
 
@@ -66,13 +70,52 @@ class _SinglePlayerState extends State<SinglePlayer> {
                   SizedBox(
                     height: size.height * 0.4,
                     child: Center(
-                      child: Obx(
-                       ()=> Text(
-                          controller.isGameCompleted.value
-                              ? "Game Drawn"
-                              : "${controller.userPlaying.value ? "X" : "O"}'s Turn",
-                          style: TextStyle(color: MainColors.white, fontSize: 25),
-                        ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Row(
+                              children: [
+                                MainComponents().upperRowButton(
+                                    FontAwesomeIcons.solidPause, () {
+                                  MainComponents().showADialog(
+                                      context,
+                                      Column(
+                                        children: [
+                                          MainComponents().mainButton(
+                                              size, Colors.green.shade600, () {
+                                            Get.back();
+                                          }, FontAwesomeIcons.solidPlay,
+                                              "Resume"),
+                                          MainComponents().mainButton(
+                                              size, Colors.red.shade600, () {
+                                            MainComponents().confirmation(
+                                                context,
+                                                "Are you sure you wanna exit?",
+                                                () {
+                                              Get.offAll(const GameSelection());
+                                            });
+                                          }, FontAwesomeIcons.solidHome,
+                                              "Go to Main Menu")
+                                        ],
+                                      ),
+                                      size);
+                                }),
+                              ],
+                            ),
+                          ),
+                          Obx(
+                            () => Text(
+                            controller.winner.value != ""
+                                  ? "${controller.winner.value == widget.selectedSymbol ? 'You Won' : 'Computer Won'}  "
+                                  :   controller.isGameCompleted.value
+                                  ? "Game Drawn"
+                                  : "${(controller.userPlaying.value && widget.selectedSymbol == "X" ? true : !controller.userPlaying.value && widget.selectedSymbol == "O" ? true : false) ? "Your" : "Computer's"} Turn",
+                              style: TextStyle(
+                                  color: MainColors.white, fontSize: 25),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -83,7 +126,6 @@ class _SinglePlayerState extends State<SinglePlayer> {
                             () => Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
-
                               children: [
                                 /*
                                 888888 88 88""Yb .dP"Y8 888888     88""Yb  dP"Yb  Yb        dP
@@ -92,12 +134,12 @@ class _SinglePlayerState extends State<SinglePlayer> {
                                 88     88 88  Yb 8bodP'   88       88  Yb  YbodP     YP  YP
                                 */
                                 Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    boxWidget(controller, 0),
-                                    boxWidget(controller, 1),
-                                    boxWidget(controller, 2),
+                                    boxWidget(controller, 0, context, size),
+                                    boxWidget(controller, 1, context, size),
+                                    boxWidget(controller, 2, context, size),
                                   ],
                                 ),
 
@@ -108,12 +150,12 @@ class _SinglePlayerState extends State<SinglePlayer> {
                                 8bodP' 888888  YboodP  YbodP  88  Y8 8888Y"      88  Yb  YbodP     YP  YP
                                 */
                                 Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    boxWidget(controller, 3),
-                                    boxWidget(controller, 4),
-                                    boxWidget(controller, 5),
+                                    boxWidget(controller, 3, context, size),
+                                    boxWidget(controller, 4, context, size),
+                                    boxWidget(controller, 5, context, size),
                                   ],
                                 ),
 
@@ -124,12 +166,12 @@ class _SinglePlayerState extends State<SinglePlayer> {
                                   88   88  88 88 88  Yb 8888Y"      88  Yb  YbodP     YP  YP
                                 */
                                 Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    boxWidget(controller, 6),
-                                    boxWidget(controller, 7),
-                                    boxWidget(controller, 8),
+                                    boxWidget(controller, 6, context, size),
+                                    boxWidget(controller, 7, context, size),
+                                    boxWidget(controller, 8, context, size),
                                   ],
                                 ),
                               ],
@@ -144,16 +186,26 @@ class _SinglePlayerState extends State<SinglePlayer> {
     );
   }
 
-  Widget boxWidget(controller, int boxNum) {
+  Widget boxWidget(controller, int boxNum, context, size) {
     return InkWell(
       onTap: () {
         if (controller.boxes[boxNum] != "") {
           return;
         }
-       // controller.checkIfGameFinished();
-        controller.addToBox(boxNum, controller.userPlaying.value ? "X" : "O");
+
+
+
+        controller.addToBox(boxNum, controller.userPlaying.value ? "X" : "O",
+            context, size, widget.selectedSymbol);
 
         controller.changeUserPlaying(!controller.userPlaying.value);
+
+        if ((widget.selectedSymbol == "O" && controller.userPlaying.value)) {
+          controller.computerPlay(widget.selectedSymbol, context, size);
+        }
+        if ((widget.selectedSymbol == "X" && !controller.userPlaying.value)) {
+          controller.computerPlay(widget.selectedSymbol, context, size);
+        }
       },
       child: Container(
           width: 120,
@@ -168,15 +220,15 @@ class _SinglePlayerState extends State<SinglePlayer> {
                       : const BorderSide(color: Colors.black, width: 2))),
           child: controller.boxes[boxNum] == "X"
               ? Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Image.asset('assets/imgs/X.png'),
-              )
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset('assets/imgs/X.png'),
+                )
               : Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: controller.boxes[boxNum] == "O"
-                    ? Image.asset('assets/imgs/O.png')
-                    : const NothingWidget(),
-              )),
+                  padding: const EdgeInsets.all(10.0),
+                  child: controller.boxes[boxNum] == "O"
+                      ? Image.asset('assets/imgs/O.png')
+                      : const NothingWidget(),
+                )),
     );
   }
 }

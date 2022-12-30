@@ -141,19 +141,6 @@ class _StatsScreenState extends State<StatsScreen> {
                                 Text("${userData.get(1)!.consectiveWins}")
                               ],
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 15.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const Text("Win Percentage : "),
-                                  Text(
-                                      "${(userData.get(1)!.gamesWonvsPlayer + userData.get(1)!.gamesWonvsComputer) == 0 ? "No Games Played Yet" : (userData.get(1)!.gamesWonvsPlayer + userData.get(1)!.gamesWonvsComputer) / (userData.get(1)!.gamesPlayedvsComputer + userData.get(1)!.gamesPlayedvsPlayer) == 0}")
-                                ],
-                              ),
-                            ),
                           ],
                         ),
                       ),

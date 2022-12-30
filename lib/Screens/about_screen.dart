@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:tik_tak_toe/Models/users.dart';
-import 'package:tik_tak_toe/main.dart';
-import 'package:tik_tak_toe/objectbox.g.dart';
 import '../Theme/main_colors.dart';
 
 class AboutScreen extends StatefulWidget {
@@ -93,9 +90,9 @@ class _AboutScreenState extends State<AboutScreen> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(top: 20.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
                                   "Game Developed By:",
@@ -104,35 +101,43 @@ class _AboutScreenState extends State<AboutScreen> {
                                       fontSize: 20,
                                       fontFamily: "Bold"),
                                 ),
-                                Text("Hayder Ali",
-                                    style: TextStyle(
-                                        color: MainColors.white,
-                                        fontSize: 20,
-                                        fontFamily: "Bold")),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 10.0),
+                                  child: Text("Hayder Ali",
+                                      style: TextStyle(
+                                          color: MainColors.white,
+                                          fontSize: 20,
+                                          fontFamily: "Bold")),
+                                ),
                               ],
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 40.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Technologies\nUsed :",
+                                  "Technologies Used :",
                                   style: TextStyle(
                                       color: MainColors.white,
                                       fontSize: 20,
                                       fontFamily: "Bold"),
                                 ),
                                 Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(
-                                      "Flutter",
-                                      style: TextStyle(
-                                          color: MainColors.white,
-                                          fontSize: 20,
-                                          fontFamily: "Bold"),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 10.0),
+                                      child: Text(
+                                        "Flutter",
+                                        style: TextStyle(
+                                            color: MainColors.white,
+                                            fontSize: 20,
+                                            fontFamily: "Bold"),
+                                      ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
@@ -170,9 +175,9 @@ class _AboutScreenState extends State<AboutScreen> {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 40.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
                                   "Available For :",
@@ -182,13 +187,18 @@ class _AboutScreenState extends State<AboutScreen> {
                                       fontFamily: "Bold"),
                                 ),
                                 Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Text(
-                                      "Android",
-                                      style: TextStyle(
-                                          color: MainColors.white,
-                                          fontSize: 20,
-                                          fontFamily: "Bold"),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 10.0),
+                                      child: Text(
+                                        "Android",
+                                        style: TextStyle(
+                                            color: MainColors.white,
+                                            fontSize: 20,
+                                            fontFamily: "Bold"),
+                                      ),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
